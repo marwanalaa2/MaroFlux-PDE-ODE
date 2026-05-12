@@ -1,0 +1,6 @@
+{
+  "title": "Sobol Sensitivity Analysis Results",
+  "methodology": "MaroFlux_Final_v6.pdf \u2014 Sec 3.4.2",
+  "note": "For publication use N_base=2**13; current run used smaller N.",
+  "status": "SALib not installed \u2014 install via: pip install SALib"
+}
