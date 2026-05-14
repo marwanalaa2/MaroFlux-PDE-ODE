@@ -1,93 +1,107 @@
 {
-  "title": "MaroFlux Calibrated Parameters & Simulation Results",
-  "methodology": "MaroFlux_Final_v6.pdf \u2014 Sec 3.4.1, 3.7, 9.1-9.2",
-  "repository": "https://github.com/[author]/MaroFlux-PDE-ODE",
-  "zenodo_doi": "10.5281/zenodo.[XXXXXX]  \u2190 replace before submission",
-  "parameters": {
-    "L": 0.001,
-    "Nx": 100,
-    "dx": 1e-05,
-    "v": 5e-07,
-    "D_Si": 1.2e-10,
-    "D_pH": 9.3e-09,
-    "k_gate": 0.12,
-    "delta_syn": 1.8,
-    "pH_threshold": 7.1,
-    "pH_eq": 7.4,
-    "k_norm": 0.05,
-    "G_M1": 500.0,
-    "G_M2": 80.0,
-    "D_M1": 0.25,
-    "D_M2": 0.15,
-    "k_growth": 0.00012,
-    "k_atrophy": 8e-05,
-    "d_MPS": 0.1,
-    "d_MPB": 0.05,
-    "w": [
-      0.38,
-      0.28,
-      0.22,
-      0.12
-    ],
-    "sec_per_day": 86400.0
+  "calibration_info": {
+    "date": "2026-05-14",
+    "method": "Bayesian inference (MCMC)",
+    "software": "PyMC3",
+    "data_source": "In vitro ion release and macrophage polarization assays",
+    "notes": "Placeholder calibrated parameters. To be updated after experimental data collection."
   },
-  "tolerances": {
-    "D_Si": [
-      1.2e-10,
-      0.15
-    ],
-    "k_gate": [
-      0.12,
-      0.25
-    ],
-    "delta_syn": [
-      1.8,
-      0.2
-    ],
-    "pH_threshold": [
-      7.1,
-      0.014
-    ],
-    "k_norm": [
-      0.05,
-      0.2
-    ],
-    "v": [
-      5e-07,
-      0.3
-    ]
+  "diffusion_coefficients": {
+    "D_Zn": 7.9e-10,
+    "D_Cu": 7.3e-10,
+    "D_Sr": 7.9e-10,
+    "D_IL4": 1.5e-10,
+    "D_Si": 1.0e-9,
+    "D_IGF1": 1.2e-10,
+    "D_BMP2": 6.0e-11,
+    "D_H": 9.3e-9
   },
-  "results_summary": {
-    "final_M2_ratio": 0.24492438479489964,
-    "final_CSA_recovery_pct": -0.00046902145866001277,
-    "avg_Ma": 1128.730490144538,
-    "final_E_MF": 0.4860712662220257,
-    "bifurcation_k_gate_star": 0.02,
-    "simulation_time_days": 29.900000000000002
+  "porous_medium": {
+    "phi_macro": 0.45,
+    "phi_micro": 0.20,
+    "tau_macro": 1.2,
+    "tau_micro": 3.0,
+    "K_macro": 1.0e-8,
+    "K_micro": 1.0e-14,
+    "rho_b": 1800.0,
+    "mu": 7.0e-4
   },
-  "monte_carlo_uq": {
-    "N_mc": 500,
-    "M2_ratio_at_14d": {
-      "mean": 0.24964226428791578,
-      "std": 0.04941742789966401,
-      "ci95_lo": 0.19919283806208635,
-      "ci95_hi": 0.3829453660441663,
-      "cv_pct": 19.79529701938501
-    },
-    "CSA_recovery_pct": {
-      "mean": -0.00011994182364114537,
-      "std": 3.3204120579705676e-07,
-      "ci95_lo": -0.00012050447544265097,
-      "ci95_hi": -0.00011924889460362964,
-      "cv_pct": -0.2768375234694911
-    },
-    "E_MF_final": {
-      "mean": 0.34586406042940804,
-      "std": 0.018778622601872318,
-      "ci95_lo": 0.3266932784635928,
-      "ci95_hi": 0.39651923909678316,
-      "cv_pct": 5.429480739994459
-    },
-    "robustness_M2_gt_06": 0.0
+  "gate": {
+    "pH_0.5": 7.10,
+    "k_pH": 25.0,
+    "chi_0.5": 0.30,
+    "k_chi": 12.0,
+    "xi_0": 3.0e-9,
+    "k_gate": 3.0e-3,
+    "thickness": 5.0e-6
+  },
+  "macrophage": {
+    "k_rec_M0": 1.16e-5,
+    "tau_DAMPs": 48.0,
+    "M_max": 1000000.0,
+    "k_d_M0": 3.2e-6,
+    "k_d_M1": 5.8e-6,
+    "k_d_M2": 2.0e-6,
+    "k_pol_M1": 2.0e-5,
+    "k_pol_M2": 5.0e-6,
+    "k_switch": 1.0e-5,
+    "K_Sr": 25.0,
+    "K_IL4": 2.0,
+    "K_DAMPs": 0.1
+  },
+  "metabolic": {
+    "q_H_M1": 3.0e-17,
+    "q_H_M2": 7.0e-18,
+    "k_buf": 0.005,
+    "k_hyd": 1.0e-5
+  },
+  "MMP": {
+    "k_sec_M2": 1.0e-20,
+    "k_deg": 2.0e-5,
+    "MMP_max": 30.0
+  },
+  "payload": {
+    "Sr_load": 100.0,
+    "IL4_load": 30.0,
+    "IGF1_load": 75.0,
+    "BMP2_load": 3.0
+  },
+  "t_onset": {
+    "Zn": 0.0,
+    "Cu": 0.0,
+    "Sr": 3.0,
+    "IL4": 3.0,
+    "Si": 7.0,
+    "IGF1": 10.0,
+    "BMP2": 10.0
+  },
+  "degradation_rates": {
+    "k_deg_IL4": 2.0e-6,
+    "k_deg_IGF1": 2.0e-6,
+    "k_deg_BMP2": 2.0e-6
+  },
+  "synergy": {
+    "delta_syn": 1.85
+  },
+  "domain": {
+    "Lx": 0.005,
+    "Ly": 0.005,
+    "Lz": 0.005,
+    "wound_radius": 0.001
+  },
+  "simulation": {
+    "t_end": 30.0,
+    "dt": 0.05,
+    "output_interval": 0.5
+  },
+  "initial_conditions": {
+    "pH_wound": 6.5,
+    "pH_tissue": 7.4,
+    "M0": 1000.0,
+    "M1_wound": 10000.0,
+    "M1_tissue": 100.0,
+    "M2": 100.0,
+    "MMP": 0.0,
+    "DAMPs_0": 1.0
   }
 }
