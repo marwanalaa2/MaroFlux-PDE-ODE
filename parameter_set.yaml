@@ -1,0 +1,199 @@
+# parameters/parameter_set.yaml
+# Complete parameter set for the Unified MaroFlux Equation (UME)
+# All values correspond to Table 3.1 of the MaroFlux Paradigm treatise.
+
+# =============================================================================
+# DIFFUSION COEFFICIENTS (free solution, m²/s at 37°C)
+# =============================================================================
+D0:
+  Zn: 7.9e-10
+  Cu: 7.3e-10
+  Sr: 7.9e-10
+  IL4: 1.5e-10
+  Si: 1.0e-9
+  IGF1: 1.2e-10
+  BMP2: 6.0e-11
+  H: 9.3e-9
+  MMP: 4.0e-11
+
+# =============================================================================
+# POROUS MEDIUM PROPERTIES
+# =============================================================================
+porosity:
+  macro: 0.45
+  micro: 0.20
+  tissue: 0.30
+
+tortuosity:
+  macro: 1.2
+  micro: 3.0
+  tissue: 2.0
+
+# Permeability (m²)
+permeability:
+  macro: 1.0e-8
+  micro: 1.0e-14
+  tissue: 4.0e-13
+
+# Bulk density of scaffold (kg/m³)
+rho_b: 1800.0
+
+# Fluid viscosity (Pa·s)
+mu: 7.0e-4
+
+# Forchheimer coefficient
+F_forchheimer: 0.55
+
+# =============================================================================
+# LANGMUIR BINDING PARAMETERS (competitive adsorption)
+# =============================================================================
+# Affinity constants (m³/mol)
+K_L:
+  Zn: 1.0e-3
+  Cu: 8.0e-4
+  Sr: 5.0e-4
+  Ca: 2.0e-4
+
+# Maximum adsorption capacity (mol/kg)
+q_max:
+  Zn: 0.05
+  Cu: 0.04
+  Sr: 0.03
+  Ca: 0.10
+
+# =============================================================================
+# GATE PARAMETERS (Layer II - Chitosan-PAA semi-IPN)
+# =============================================================================
+gate:
+  pH_0.5: 7.10          # pH at which gate is 50% open
+  k_pH: 25.0            # Steepness of pH response
+  chi_0.5: 0.30         # Normalized MMP at 50% opening
+  k_chi: 12.0           # Steepness of MMP response
+  xi_0: 3.0e-9          # Dry mesh size (m)
+  thickness: 5.0e-6     # Gate coating thickness (m)
+  swelling_rate: 3.0e-3 # k_gate (s⁻¹)
+
+# =============================================================================
+# MACROPHAGE PARAMETERS
+# =============================================================================
+macrophage:
+  # Recruitment
+  k_rec_M0: 1.16e-5     # Maximum M0 recruitment rate (s⁻¹)
+  tau_DAMPs: 48.0       # DAMPs decay time constant (hours)
+  M_max: 1.0e6          # Carrying capacity (cells/cm³)
+
+  # Death rates (s⁻¹)
+  k_d_M0: 3.2e-6
+  k_d_M1: 5.8e-6
+  k_d_M2: 2.0e-6
+
+  # Polarization rates (s⁻¹)
+  k_pol_M1: 2.0e-5
+  k_pol_M2: 5.0e-6
+  k_switch: 1.0e-5      # Maximum M1→M2 transition rate
+
+  # Half-saturation constants
+  K_Sr: 25.0            # µM
+  K_IL4: 2.0            # ng/mL
+  K_IL4_pol: 5.0        # ng/mL (for M0→M2 polarization)
+  K_DAMPs: 0.1          # Dimensionless (fraction of initial)
+
+# =============================================================================
+# METABOLIC PARAMETERS
+# =============================================================================
+metabolic:
+  # Acid production rates (mol/cell/s)
+  q_H_M1: 3.0e-17
+  q_H_M2: 7.0e-18
+
+  # Buffering rate (s⁻¹)
+  k_buf: 5.0e-3
+
+  # Ion hydrolysis rate (s⁻¹)
+  k_hyd: 1.0e-5
+
+  # Stoichiometric coefficients (H⁺ produced per divalent cation hydrolyzed)
+  nu_H:
+    Zn: 2.0
+    Cu: 2.0
+    Sr: 2.0
+
+# =============================================================================
+# MMP PARAMETERS
+# =============================================================================
+MMP:
+  k_sec_M2: 1.0e-20     # Secretion rate per M2 cell (mol/cell/s)
+  k_deg: 2.0e-5         # Degradation rate (s⁻¹)
+  MMP_max: 30.0         # Maximum concentration (nM)
+
+# =============================================================================
+# PAYLOAD LOADING DENSITIES (per cm³ of scaffold)
+# =============================================================================
+payload:
+  # Phase I (intrinsic to Nile clay, available fraction)
+  Zn_intrinsic: 120.0   # ppm (µg/g)
+  Cu_intrinsic: 45.0    # ppm (µg/g)
+
+  # Phase II (loaded)
+  Sr_load: 100.0        # µg/cm³
+  IL4_load: 30.0        # µg/cm³
+
+  # Phase III (loaded)
+  IGF1_load: 75.0       # ng/cm³
+  BMP2_load: 3.0        # µg/cm³
+
+  # Phase 0 (CeO₂ NPs in gate)
+  CeO2_load: 0.3        # wt% relative to polymer
+
+# =============================================================================
+# RELEASE ONSET TIMES (days)
+# =============================================================================
+t_onset:
+  Zn: 0.0
+  Cu: 0.0
+  Sr: 3.0
+  IL4: 3.0
+  Si: 7.0
+  IGF1: 10.0
+  BMP2: 10.0
+
+# =============================================================================
+# DEGRADATION RATES FOR PROTEINS (s⁻¹)
+# =============================================================================
+k_deg:
+  IL4: 2.0e-6
+  IGF1: 2.0e-6
+  BMP2: 2.0e-6
+
+# =============================================================================
+# IONIC SYNERGY PARAMETER
+# =============================================================================
+delta_syn: 1.85
+
+# =============================================================================
+# DOMAIN AND SIMULATION SETTINGS
+# =============================================================================
+domain:
+  Lx: 5.0e-3            # Domain length (m)
+  Ly: 5.0e-3
+  Lz: 5.0e-3
+  wound_radius: 1.0e-3  # Radius of wound zone around scaffold (m)
+
+simulation:
+  t_end: 30.0           # Simulation duration (days)
+  dt: 0.05              # Time step (days)
+  output_interval: 0.5  # Output save interval (days)
+  output_dir: "output"
+
+# =============================================================================
+# INITIAL CONDITIONS
+# =============================================================================
+initial:
+  pH_wound: 6.5
+  pH_tissue: 7.4
+  M0: 1.0e3             # cells/cm³
+  M1_wound: 1.0e4
+  M1_tissue: 1.0e2
+  M2: 1.0e2
+  MMP: 0.0
+  DAMPs_0: 1.0          # Normalized initial DAMPs
