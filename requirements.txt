@@ -1,30 +1,30 @@
-# MaroFlux PDE-ODE Hybrid Simulation — Python Dependencies
-# ============================================================
-# Install all dependencies with:
-#   pip install -r requirements.txt
-#
-# For publication-grade Sobol analysis (Sec 3.4.2, N=2**13):
-#   pip install SALib
-#
-# Python version tested: 3.10, 3.11, 3.12
-# Author: Marwan Alaa Mohamed Mohamed Raslan
-# Reference: MaroFlux_Final_v6.pdf
+# MaroFlux Paradigm - Required Python Packages
+# Install with: pip install -r requirements.txt
 
-# ── Core numerical computation ────────────────────────────────────────────────
-numpy>=1.24.0,<2.0.0          # Array operations, random sampling (Sec 3.4.3 Monte Carlo)
-scipy>=1.11.0,<2.0.0          # solve_ivp (LSODA ODE), sparse solvers (PDE implicit)
+# Core numerical and scientific computing
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.5.0
 
-# ── Visualization (publication-quality figures, 300 dpi) ─────────────────────
-matplotlib>=3.7.0,<4.0.0      # 6-panel figure (panels A–F), bifurcation diagram
+# Finite Element Method (FEniCS)
+# See https://fenicsproject.org/download/ for installation
+fenics>=2019.1.0
 
-# ── Optional: Global Sensitivity Analysis (Sec 3.4.2) ────────────────────────
-# Required for Sobol S1/ST indices via Saltelli sampling
-# If absent, sensitivity section is gracefully skipped (HAS_SALIB = False)
-# For N=2**13 publication run, install before executing:
-SALib>=1.4.7,<2.0.0           # Saltelli sampling + Sobol analysis
+# Sensitivity analysis
+salib>=1.4.0
 
-# ── Standard library (no installation needed — included with Python) ──────────
-# json       — JSON export of calibrated_params_pde_ode.json
-# os         — Directory creation (figures/)
-# warnings   — Suppression of scipy integration warnings
-# time       — Simulation runtime measurement
+# YAML parameter files
+pyyaml>=6.0
+
+# HDF5 file support (mesh and output)
+h5py>=3.6.0
+
+# Interactive computing
+jupyter>=1.0.0
+ipython>=7.30.0
+
+# Progress bars for long simulations
+tqdm>=4.60.0
+
+# Additional utilities
+pandas>=1.3.0
