@@ -1,0 +1,76 @@
+# parameters/muscle_parameters.yaml
+# Parameters for the Extended Muscle Regeneration Model (Part IV)
+# All values correspond to Table 4.1 of the MaroFlux Paradigm treatise.
+
+# =============================================================================
+# SATELLITE CELL KINETICS
+# =============================================================================
+satellite_cell:
+  k_act: 0.08           # Activation rate (h⁻¹)
+  k_prolif: 0.05        # Proliferation rate (h⁻¹)
+  k_diff: 0.02          # Differentiation rate (h⁻¹)
+  k_fuse: 0.01          # Fusion rate (h⁻¹)
+  k_return: 0.003       # Return to quiescence rate (h⁻¹)
+
+  # Death rates (h⁻¹)
+  d_Q: 0.001            # Quiescent satellite cell death
+  d_A: 0.015            # Myoblast death
+  d_D: 0.01             # Myocyte death
+  d_F: 0.0005           # Myofiber death
+
+# =============================================================================
+# ACTIVATION FUNCTION PARAMETERS
+# =============================================================================
+activation:
+  K_DAMPs: 0.1          # Half-saturation for DAMPs (fraction of initial)
+  eta_TNF: 0.5          # TNF-α contribution coefficient
+  K_M1_act: 5.0e3       # M1 half-saturation for activation (cells/cm³)
+
+# =============================================================================
+# PROLIFERATION FUNCTION PARAMETERS
+# =============================================================================
+proliferation:
+  K_prolif_M1: 1.0e4    # M1 half-saturation (cells/cm³)
+  K_prolif_IGF: 5.0     # IGF-1 half-saturation (ng/mL)
+
+# =============================================================================
+# DIFFERENTIATION FUNCTION PARAMETERS
+# =============================================================================
+differentiation:
+  K_diff_M2: 1.0e4      # M2 half-saturation (cells/cm³)
+  K_diff_IGF: 10.0      # IGF-1 half-saturation (ng/mL)
+
+# =============================================================================
+# FUSION FUNCTION PARAMETERS
+# =============================================================================
+fusion:
+  K_fuse_M2: 8.0e3      # M2 half-saturation (cells/cm³)
+
+# =============================================================================
+# Akt/mTOR/MPS PARAMETERS
+# =============================================================================
+mps:
+  k_phos: 0.01          # Akt phosphorylation rate (nM⁻¹·h⁻¹)
+  k_dephos: 0.1         # Akt dephosphorylation rate (h⁻¹)
+  MPS_max: 0.15         # Maximum protein synthesis rate (ng/µg/h)
+  n_Hill: 2.5           # Hill coefficient for Akt-mTOR activation
+  K_Akt: 0.3            # pAkt half-saturation (dimensionless, fraction 0-1)
+
+# =============================================================================
+# HYPERTROPHY PARAMETERS
+# =============================================================================
+hypertrophy:
+  alpha: 0.6            # Protein incorporation efficiency (dimensionless)
+  MPB: 0.03             # Muscle protein breakdown rate (h⁻¹)
+  beta: 1.0             # Breakdown scaling factor
+
+  # Initial and target CSA (µm²) — rodent tibialis anterior
+  CSA_0: 800.0          # Post-injury initial CSA
+  CSA_target: 2200.0    # Pre-injury target CSA
+
+# =============================================================================
+# SPATIAL KERNEL PARAMETERS
+# =============================================================================
+kernel:
+  r_sense: 75.0         # Radius of cellular sensing (µm)
+  sigma: 25.0           # Gaussian kernel width (µm, approx r_sense/3)
