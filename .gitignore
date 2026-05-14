@@ -1,92 +1,59 @@
-# MaroFlux PDE-ODE Repository — Git Ignore Rules
-# ================================================
-
-# ── Python cache & bytecode ───────────────────────────────────────────────────
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-*.pyc
-*.pyo
-*.pyd
-.Python
-
-# ── Virtual environments ──────────────────────────────────────────────────────
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+*.so
 *.egg-info/
 dist/
 build/
+*.egg
 
-# ── Jupyter Notebooks checkpoints ────────────────────────────────────────────
+# Virtual environments
+venv/
+env/
+maroflux-env/
+.venv/
+
+# Jupyter
 .ipynb_checkpoints/
-*.ipynb
+*.ipynb_checkpoints
 
-# ── Generated figures (regenerate by running the script) ─────────────────────
-# NOTE: figures/ IS committed for reproducibility (reviewers can verify outputs)
-# Uncomment the lines below ONLY if you prefer to exclude auto-generated figures:
-# figures/
-# *.pdf
-# *.png
-# *.svg
-
-# ── Large data files (if simulation produces HDF5/NetCDF outputs) ─────────────
-*.h5
-*.hdf5
-*.nc
-*.npy
-*.npz
-
-# ── OS-specific files ─────────────────────────────────────────────────────────
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# ── IDE / editor configurations ──────────────────────────────────────────────
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.project
-.pydevproject
 
-# ── Testing & coverage ───────────────────────────────────────────────────────
+# OS
+.DS_Store
+Thumbs.db
+
+# Simulation output (generated at runtime)
+output/figures/
+output/data/
+*.xdmf
+*.h5
+!mesh_files/*.xdmf
+!mesh_files/*.h5
+
+# Gmsh temporary files
+*.msh
+!mesh_files/maroflux_mesh.msh
+
+# Python cache
+*.pyc
 .pytest_cache/
-.coverage
-htmlcov/
-.tox/
-nosetests.xml
-coverage.xml
 
-# ── Temporary files ───────────────────────────────────────────────────────────
+# Conda
+*.conda
+
+# PDF (large file, keep only if intentional)
+# MaroFlux_Complete_Output.pdf
+
+# Logs
 *.log
-*.tmp
-*.bak
-*.orig
-temp/
+
+# Temporary
 tmp/
-
-# ── Sensitive / personal configuration ───────────────────────────────────────
-.env.local
-secrets.py
-config_local.py
-
-# ── Files NOT to ignore (force-include for reproducibility) ───────────────────
-# These are explicitly tracked even if their extensions appear above:
-!calibrated_params_pde_ode.json
-!sobol_sensitivity_results_pde_ode.json
-!requirements.txt
-!README.md
-!LICENSE
-!maroflux_solver_complete.py
-!figures/MaroFlux_Complete_Output.pdf
+temp/
